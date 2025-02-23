@@ -20,28 +20,6 @@
 #define MAGIC 2
 #define FACTORY_TEST 3
 
-//////////////////////////////////////////////////////////////////////////
-//
-// Approximation of Pascal Getreuer's Select Word macro from QMK
-// - https://getreuer.info/posts/keyboards/select-word/index.html
-//
-//////////////////////////////////////////////////////////////////////////
-
-//
-// SELECT_WORD_DELAY defines how long the macro waits (milliseconds)
-// after moving the cursor before it selects a word.  A larger delay
-// may allow the macro to move to the next word upon each invocation.
-
-#define SELECT_WORD_DELAY 1
-#define select_all kp _C(A)
-
-ZMK_MACRO(select_none,
-  wait-ms = <1>;
-  tap-ms = <1>;
-  bindings = <&kp DOWN &kp UP &kp RIGHT &kp LEFT>;
-)
-
-
 / {
     behaviors {
         // For the "layer" key, it'd nice to be able to use it as either a shift or a toggle.
