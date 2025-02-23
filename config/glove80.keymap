@@ -44,6 +44,13 @@
     };
 
     macros {
+
+        ZMK_MACRO(select_none,
+          wait-ms = <SELECT_WORD_DELAY>;
+          tap-ms = <SELECT_WORD_DELAY>;
+          bindings = <&kp DOWN &kp UP &kp RIGHT &kp LEFT>;
+        )
+
         rgb_ug_status_macro: rgb_ug_status_macro_0 {
             label = "RGB_UG_STATUS";
             compatible = "zmk,behavior-macro";
