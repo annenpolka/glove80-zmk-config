@@ -31,7 +31,7 @@
 // SELECT_WORD_DELAY defines how long the macro waits (milliseconds)
 // after moving the cursor before it selects a word.  A larger delay
 // may allow the macro to move to the next word upon each invocation.
-/
+
 #ifndef SELECT_WORD_DELAY
 #define SELECT_WORD_DELAY 1
 #endif
