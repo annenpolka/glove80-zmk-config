@@ -27,6 +27,20 @@
 #endif
 
 #define select_all &kp LC(A)
+// ワードナビゲーション用の修飾子を定義（ここでは左Altを使用）
+// 必要に応じて「WORD_NAV_MOD」を例えばLC（左Ctrl）などに変更できる
+#ifndef WORD_NAV_MOD
+#define WORD_NAV_MOD LA
+#endif
+
+// ワード移動用のキーコード定義
+#define WORD_RIGHT         WORD_NAV_MOD(RIGHT)       // 例: 左Alt + Right Arrow
+#define WORD_LEFT          WORD_NAV_MOD(LEFT)        // 例: 左Alt + Left Arrow
+#define WORD_RIGHT_SHIFT   WORD_NAV_MOD(LS(RIGHT))   // 例: 左Alt + Shift + Right Arrow
+#define WORD_LEFT_SHIFT    WORD_NAV_MOD(LS(LEFT))    // 例: 左Alt + Shift + Left Arrow
+
+// その他のキーコードはすでにdt-bindings/zmk/keys.hなどで定義されていると仮定する
+#define select_all &kp LC(A)
 
 / {
     behaviors {
@@ -51,42 +65,34 @@
         };
 
         // 単語選択の基本動作
-
         select_word: select_word {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&select_word_right>, <&select_word_left>;
-
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         // 単語選択の拡張動作
-
         extend_word: extend_word {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&extend_word_right>, <&extend_word_left>;
-
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         // 行選択の基本動作
-
         select_line: select_line {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&select_line_right>, <&select_line_left>;
-
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         // 行選択の拡張動作
-
         extend_line: extend_line {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&extend_line_right>, <&extend_line_left>;
-
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
@@ -134,8 +140,7 @@
             bindings = <&out OUT_BLE &bt BT_SEL 4>;
         };
 
-        // 選択解除
-
+        // 選択解除用マクロ
         select_none: select_none {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -144,48 +149,44 @@
             bindings = <&kp DOWN &kp UP &kp RIGHT &kp LEFT>;
         };
 
-        // 単語選択（右方向）
-
+        // 単語選択（右方向）のマクロ
         select_word_right: select_word_right {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <SELECT_WORD_DELAY>;
             tap-ms = <SELECT_WORD_DELAY>;
-            bindings = <&kp _W(RIGHT) &kp _W(LEFT) &kp _W(LS(RIGHT))>;
+            // もともと _W(RIGHT) 等としていた部分をWORD_RIGHTなどのdefineに置き換え
+            bindings = <&kp WORD_RIGHT &kp WORD_LEFT &kp WORD_RIGHT_SHIFT>;
         };
 
-        // 単語選択（左方向）
-
+        // 単語選択（左方向）のマクロ
         select_word_left: select_word_left {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <SELECT_WORD_DELAY>;
             tap-ms = <SELECT_WORD_DELAY>;
-            bindings = <&kp _W(LEFT) &kp _W(RIGHT) &kp _W(LS(LEFT))>;
+            bindings = <&kp WORD_LEFT &kp WORD_RIGHT &kp WORD_LEFT_SHIFT>;
         };
 
         // 単語選択の拡張（右方向）
-
         extend_word_right: extend_word_right {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <SELECT_WORD_DELAY>;
             tap-ms = <SELECT_WORD_DELAY>;
-            bindings = <&kp _W(LS(RIGHT))>;
+            bindings = <&kp WORD_RIGHT_SHIFT>;
         };
 
         // 単語選択の拡張（左方向）
-
         extend_word_left: extend_word_left {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <SELECT_WORD_DELAY>;
             tap-ms = <SELECT_WORD_DELAY>;
-            bindings = <&kp _W(LS(LEFT))>;
+            bindings = <&kp WORD_LEFT_SHIFT>;
         };
 
-        // 行選択（右方向）
-
+        // 行選択（右方向）のマクロ
         select_line_right: select_line_right {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -194,8 +195,7 @@
             bindings = <&kp HOME &kp LS(END)>;
         };
 
-        // 行選択（左方向）
-
+        // 行選択（左方向）のマクロ
         select_line_left: select_line_left {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -204,8 +204,7 @@
             bindings = <&kp END &kp LS(HOME)>;
         };
 
-        // 行選択の拡張（右方向）
-
+        // 行選択の拡張（右方向）のマクロ
         extend_line_right: extend_line_right {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -214,8 +213,7 @@
             bindings = <&kp LS(DOWN) &kp LS(END)>;
         };
 
-        // 行選択の拡張（左方向）
-
+        // 行選択の拡張（左方向）のマクロ
         extend_line_left: extend_line_left {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -223,6 +221,7 @@
             tap-ms = <SELECT_WORD_DELAY>;
             bindings = <&kp LS(UP) &kp LS(HOME)>;
         };
+
     };
 
     keymap {
