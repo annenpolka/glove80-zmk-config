@@ -97,7 +97,7 @@
 &kp TAB        &kp Q     &kp W    &kp E     &kp R      &kp T                                                                                                                &kp Y   &kp U   &kp I      &kp O     &kp P     &kp BSLH
 &kp ESC        &kp A     &kp S    &kp D     &kp F      &kp G                                                                                                                &kp H   &kp J   &kp K      &kp L     &kp SEMI  &kp SQT
 &kp BACKSPACE  &kp Z     &kp X    &kp C     &kp V      &kp B   &kp LSHFT            &kp LEFT_SHIFT    &layer_td        &kp LGUI          &kp RCTRL         &kp RSHFT        &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &kp INT_RO
-&magic 3 0     &kp HOME  &kp END  &kp LEFT  &kp RIGHT          &mt LEFT_WIN RS(N8)  &lt 1 LANGUAGE_1  &mt LCTRL SPACE  &mt RSHIFT ENTER  &lt 2 LANGUAGE_2  &mt RALT RS(N9)          &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &kp PIPE
+&magic 3 0     &kp HOME  &kp END  &kp LEFT  &kp RIGHT          &mt LEFT_WIN RS(N8)  &lt 1 LANGUAGE_2  &mt LCTRL SPACE  &mt RSHIFT ENTER  &lt 2 LANGUAGE_1  &mt RALT RS(N9)          &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &kp PIPE
             >;
         };
 
