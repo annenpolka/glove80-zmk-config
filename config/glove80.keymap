@@ -20,6 +20,13 @@
 #define MAGIC 2
 #define FACTORY_TEST 3
 
+
+#ifndef SELECT_WORD_DELAY
+#define SELECT_WORD_DELAY 1
+#endif
+
+#define select_all &kp LC(A)
+
 / {
     behaviors {
         // For the "layer" key, it'd nice to be able to use it as either a shift or a toggle.
@@ -40,6 +47,38 @@
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             bindings = <&mo>, <&rgb_ug_status_macro>;
+        };
+
+       // 単語選択の基本動作
+        select_word: select_word {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&select_word_right>, <&select_word_left>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        // 単語選択の拡張動作
+        extend_word: extend_word {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&extend_word_right>, <&extend_word_left>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        // 行選択の基本動作
+        select_line: select_line {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&select_line_right>, <&select_line_left>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        // 行選択の拡張動作
+        extend_line: extend_line {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&extend_line_right>, <&extend_line_left>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
 
@@ -86,20 +125,88 @@
             bindings = <&out OUT_BLE &bt BT_SEL 4>;
         };
 
+        // 選択解除
         select_none: select_none {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp DOWN &kp UP_ARROW &kp RIGHT &kp LEFT>;
-            label = "SELECT_NONE";
+            wait-ms = <SELECT_WORD_DELAY>;
+            tap-ms = <SELECT_WORD_DELAY>;
+            bindings = <&kp DOWN &kp UP &kp RIGHT &kp LEFT>;
         };
 
-        select_word: select_word {
+        // 単語選択（右方向）
+        select_word_right: select_word_right {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none>;
-            label = "SELECT_WORD";
+            wait-ms = <SELECT_WORD_DELAY>;
+            tap-ms = <SELECT_WORD_DELAY>;
+            bindings = <&kp _W(RIGHT) &kp _W(LEFT) &kp _W(LS(RIGHT))>;
+        };
+
+        // 単語選択（左方向）
+        select_word_left: select_word_left {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <SELECT_WORD_DELAY>;
+            tap-ms = <SELECT_WORD_DELAY>;
+            bindings = <&kp _W(LEFT) &kp _W(RIGHT) &kp _W(LS(LEFT))>;
+        };
+
+        // 単語選択の拡張（右方向）
+        extend_word_right: extend_word_right {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <SELECT_WORD_DELAY>;
+            tap-ms = <SELECT_WORD_DELAY>;
+            bindings = <&kp _W(LS(RIGHT))>;
+        };
+
+        // 単語選択の拡張（左方向）
+        extend_word_left: extend_word_left {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <SELECT_WORD_DELAY>;
+            tap-ms = <SELECT_WORD_DELAY>;
+            bindings = <&kp _W(LS(LEFT))>;
+        };
+
+        // 行選択（右方向）
+        select_line_right: select_line_right {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <SELECT_WORD_DELAY>;
+            tap-ms = <SELECT_WORD_DELAY>;
+            bindings = <&kp HOME &kp LS(END)>;
+        };
+
+        // 行選択（左方向）
+        select_line_left: select_line_left {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <SELECT_WORD_DELAY>;
+            tap-ms = <SELECT_WORD_DELAY>;
+            bindings = <&kp END &kp LS(HOME)>;
+        };
+
+        // 行選択の拡張（右方向）
+        extend_line_right: extend_line_right {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <SELECT_WORD_DELAY>;
+            tap-ms = <SELECT_WORD_DELAY>;
+            bindings = <&kp LS(DOWN) &kp LS(END)>;
+        };
+
+        // 行選択の拡張（左方向）
+        extend_line_left: extend_line_left {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <SELECT_WORD_DELAY>;
+            tap-ms = <SELECT_WORD_DELAY>;
+            bindings = <&kp LS(UP) &kp LS(HOME)>;
         };
     };
+
 
     keymap {
         compatible = "zmk,keymap";
