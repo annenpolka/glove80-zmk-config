@@ -32,11 +32,8 @@
 // after moving the cursor before it selects a word.  A larger delay
 // may allow the macro to move to the next word upon each invocation.
 
-#ifndef SELECT_WORD_DELAY
 #define SELECT_WORD_DELAY 1
-#endif
-
-#define select_all &kp _C(A)
+#define select_all kp _C(A)
 
 ZMK_MACRO(select_none,
   wait-ms = <SELECT_WORD_DELAY>;
