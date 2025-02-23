@@ -89,7 +89,7 @@
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
+        DefaultWin {
             // ---------------------------------------------------------------------------------------------------------------------------------
             // |  F1   |  F2 |  F3 |  F4  |  F5  |                                                               |  F6   |  F7   |  F8  |   F9  |  F10 |
             // |  =    |  1  |  2  |  3   |  4   |  5   |                                                 |  6   |   7   |   8   |  9   |   0   |   -  |
@@ -108,13 +108,13 @@
             >;
         };
 
-        lower_layer {
+        Navigation {
             bindings = <
 &kp C_BRI_DN  &kp C_BRI_UP  &kp C_PREV  &kp C_NEXT  &kp C_PP                                                                         &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP   &none            &kp PAUSE_BREAK
 &trans        &none         &none       &none       &none      &kp HOME                                                   &kp LPAR   &kp KP_NUM  &kp KP_EQUAL  &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp PSCRN
 &trans        &none         &none       &kp UP      &none      &kp END                                                    &kp RPAR   &kp KP_N7   &kp KP_N8     &kp KP_N9      &kp KP_MINUS     &kp SLCK
-&trans        &none         &kp LEFT    &kp DOWN    &kp RIGHT  &kp PG_UP                                                  &kp PRCNT  &kp KP_N4   &kp KP_N5     &kp KP_N6      &kp KP_PLUS      &none
-&trans        &kp K_CMENU   &none       &kp F11     &kp F12    &kp PG_DN  &trans  &trans  &to 0   &trans  &trans  &trans  &kp COMMA  &kp KP_N1   &kp KP_N2     &kp KP_N3      &kp KP_ENTER     &trans
+&trans        &none         &kp LEFT    &kp DOWN    &kp RIGHT  &kp PG_UP                                                  &kp LEFT   &kp DOWN    &kp UP_ARROW  &kp RIGHT      &kp KP_PLUS      &none
+&trans        &kp K_CMENU   &none       &kp F11     &kp F12    &kp PG_DN  &trans  &trans  &trans  &trans  &trans  &trans  &kp COMMA  &kp KP_N1   &kp KP_N2     &kp KP_N3      &kp KP_ENTER     &trans
 &trans        &kp CAPS      &kp INS     &kp F11     &kp F12               &trans  &trans  &trans  &trans  &trans  &trans             &kp KP_N0   &kp KP_N0     &kp KP_DOT     &kp KP_ENTER     &trans
             >;
         };
@@ -138,6 +138,17 @@
 &bootloader  &rgb_ug RGB_SPD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF                                                   &none  &none  &none  &none  &none  &bootloader
 &sys_reset   &none            &none            &none            &none            &none            &bt_2  &bt_3  &none         &none  &none  &none  &none  &none  &none  &none  &none  &sys_reset
 &none        &none            &none            &none            &none                             &bt_0  &bt_1  &out OUT_USB  &none  &none  &none         &none  &none  &none  &none  &to 0
+            >;
+        };
+
+        layer_4 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans                                                                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
