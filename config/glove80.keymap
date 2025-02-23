@@ -86,6 +86,19 @@
             bindings = <&out OUT_BLE &bt BT_SEL 4>;
         };
 
+        select_none: select_none {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp DOWN &kp UP_ARROW &kp RIGHT &kp LEFT>;
+            label = "SELECT_NONE";
+        };
+
+        select_word: select_word {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none>;
+            label = "SELECT_WORD";
+        };
     };
 
     keymap {
