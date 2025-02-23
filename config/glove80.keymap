@@ -20,9 +20,10 @@
 #define MAGIC 2
 #define FACTORY_TEST 3
 
-
 #ifndef SELECT_WORD_DELAY
+
 #define SELECT_WORD_DELAY 1
+
 #endif
 
 #define select_all &kp LC(A)
@@ -49,35 +50,43 @@
             bindings = <&mo>, <&rgb_ug_status_macro>;
         };
 
-       // 単語選択の基本動作
+        // 単語選択の基本動作
+
         select_word: select_word {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&select_word_right>, <&select_word_left>;
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         // 単語選択の拡張動作
+
         extend_word: extend_word {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&extend_word_right>, <&extend_word_left>;
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         // 行選択の基本動作
+
         select_line: select_line {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&select_line_right>, <&select_line_left>;
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         // 行選択の拡張動作
+
         extend_line: extend_line {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&extend_line_right>, <&extend_line_left>;
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
@@ -126,6 +135,7 @@
         };
 
         // 選択解除
+
         select_none: select_none {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -135,6 +145,7 @@
         };
 
         // 単語選択（右方向）
+
         select_word_right: select_word_right {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -144,6 +155,7 @@
         };
 
         // 単語選択（左方向）
+
         select_word_left: select_word_left {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -153,6 +165,7 @@
         };
 
         // 単語選択の拡張（右方向）
+
         extend_word_right: extend_word_right {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -162,6 +175,7 @@
         };
 
         // 単語選択の拡張（左方向）
+
         extend_word_left: extend_word_left {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -171,6 +185,7 @@
         };
 
         // 行選択（右方向）
+
         select_line_right: select_line_right {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -180,6 +195,7 @@
         };
 
         // 行選択（左方向）
+
         select_line_left: select_line_left {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -189,6 +205,7 @@
         };
 
         // 行選択の拡張（右方向）
+
         extend_line_right: extend_line_right {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -198,6 +215,7 @@
         };
 
         // 行選択の拡張（左方向）
+
         extend_line_left: extend_line_left {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -206,7 +224,6 @@
             bindings = <&kp LS(UP) &kp LS(HOME)>;
         };
     };
-
 
     keymap {
         compatible = "zmk,keymap";
@@ -232,12 +249,12 @@
 
         Navigation {
             bindings = <
-&kp C_BRI_DN  &kp C_BRI_UP  &kp C_PREV  &kp C_NEXT  &kp C_PP                                                                         &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP   &none            &kp PAUSE_BREAK
-&trans        &none         &none       &none       &none      &kp HOME                                                   &kp LPAR   &kp KP_NUM  &kp KP_EQUAL  &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp PSCRN
-&trans        &none         &none       &kp UP      &none      &kp END                                                    &kp RPAR   &kp KP_N7   &kp KP_N8     &kp KP_N9      &kp KP_MINUS     &kp SLCK
-&trans        &none         &kp LEFT    &kp DOWN    &kp RIGHT  &kp PG_UP                                                  &kp LEFT   &kp DOWN    &kp UP_ARROW  &kp RIGHT      &kp KP_PLUS      &none
-&trans        &kp K_CMENU   &none       &kp F11     &kp F12    &kp PG_DN  &trans  &trans  &trans  &trans  &trans  &trans  &kp COMMA  &kp KP_N1   &kp KP_N2     &kp KP_N3      &kp KP_ENTER     &trans
-&trans        &kp CAPS      &kp INS     &kp F11     &kp F12               &trans  &trans  &trans  &trans  &trans  &trans             &kp KP_N0   &kp KP_N0     &kp KP_DOT     &kp KP_ENTER     &trans
+&kp C_BRI_DN  &kp C_BRI_UP      &kp C_PREV  &kp C_NEXT  &kp C_PP                                                                         &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP   &none            &kp PAUSE_BREAK
+&trans        &kp LS(NUMBER_1)  &none       &none       &none      &kp HOME                                                   &kp LPAR   &kp KP_NUM  &kp KP_EQUAL  &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp PSCRN
+&trans        &none             &none       &kp UP      &none      &kp END                                                    &kp RPAR   &kp KP_N7   &kp KP_N8     &kp KP_N9      &kp KP_MINUS     &kp SLCK
+&trans        &none             &kp LEFT    &kp DOWN    &kp RIGHT  &kp PG_UP                                                  &kp LEFT   &kp DOWN    &kp UP_ARROW  &kp RIGHT      &kp KP_PLUS      &none
+&trans        &kp K_CMENU       &none       &kp F11     &kp F12    &kp PG_DN  &trans  &trans  &trans  &trans  &trans  &trans  &kp COMMA  &kp KP_N1   &kp KP_N2     &kp KP_N3      &kp KP_ENTER     &trans
+&trans        &kp CAPS          &kp INS     &kp F11     &kp F12               &trans  &trans  &trans  &trans  &trans  &trans             &kp KP_N0   &kp KP_N0     &kp KP_DOT     &kp KP_ENTER     &trans
             >;
         };
 
