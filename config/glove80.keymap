@@ -12,7 +12,9 @@
 #include <dt-bindings/zmk/rgb.h>
 
 #define HYPER LC(LS(LG(LALT)))
+
 /* Layer definitions */
+
 #define DEFAULT 0
 #define LOWER 1
 #define MAGIC 2
@@ -49,13 +51,15 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&select_word_right>, <&extend_word_right>;
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        select_backward:select_backward {
+        select_backward: select_backward {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&select_word_left>, <&extend_word_left>;
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
@@ -63,6 +67,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&select_line_right>, <&extend_line_right>;
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
@@ -70,12 +75,14 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&extend_line_left>, <&extend_line_left>;
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
 
     macros {
         /* Status and System Control Macros */
+
         rgb_ug_status_macro: rgb_ug_status_macro_0 {
             label = "RGB_UG_STATUS";
             compatible = "zmk,behavior-macro";
@@ -125,6 +132,7 @@
         };
 
         /* Text Selection and Navigation Macros */
+
         select_none: select_none {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -202,6 +210,7 @@
         compatible = "zmk,keymap";
 
         /* Base layer with default key mappings */
+
         DefaultWin {
             /* ---------------------------------------------------------------------------------------------------------------------------------
              * |  F1   |  F2 |  F3 |  F4  |  F5  |                                                               |  F6   |  F7   |  F8  |   F9  |  F10 |
@@ -223,6 +232,7 @@
         };
 
         /* Navigation and keypad layer */
+
         Navigation {
             /* ---------------------------------------------------------------------------------------------------------------------------------
              * | BRIDN | BRIUP | PREV | NEXT  | PLAY  |                                                               | MUTE  | VOLDN | VOLUP |  ---  | PAUSE |
@@ -234,16 +244,17 @@
              */
 
             bindings = <
-&kp C_BRI_DN  &kp C_BRI_UP        &kp C_PREV  &kp C_NEXT  &kp C_PP                                                                         &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP   &none            &kp PAUSE_BREAK
-&trans        &select_word_right  &none       &none       &none      &kp HOME                                                   &kp LPAR   &kp KP_NUM  &kp KP_EQUAL  &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp PSCRN
-&trans        &none               &none       &kp UP      &none      &kp END                                                    &kp RPAR   &kp KP_N7   &kp KP_N8     &kp KP_N9      &kp KP_MINUS     &kp SLCK
-&trans        &none               &kp LEFT    &kp DOWN    &kp RIGHT  &kp PG_UP                                                  &kp LEFT   &kp DOWN    &kp UP_ARROW  &kp RIGHT      &kp KP_PLUS      &none
-&trans        &kp K_CMENU         &none       &kp F11     &kp F12    &kp PG_DN  &trans  &trans  &trans  &trans  &trans  &trans  &kp COMMA  &kp KP_N1   &kp KP_N2     &kp KP_N3      &kp KP_ENTER     &trans
-&trans        &kp CAPS            &kp INS     &kp F11     &kp F12               &trans  &trans  &trans  &trans  &trans  &trans             &kp KP_N0   &kp KP_N0     &kp KP_DOT     &kp KP_ENTER     &trans
+&kp C_BRI_DN  &kp C_BRI_UP        &kp C_PREV       &kp C_NEXT  &kp C_PP                                                                         &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP   &none            &kp PAUSE_BREAK
+&trans        &select_word_right  &none            &none       &none      &kp HOME                                                   &kp LPAR   &kp KP_NUM  &kp KP_EQUAL  &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp PSCRN
+&trans        &none               &select_forward  &kp UP      &none      &kp END                                                    &kp RPAR   &kp KP_N7   &kp KP_N8     &kp KP_N9      &kp KP_MINUS     &kp SLCK
+&trans        &none               &kp LEFT         &kp DOWN    &kp RIGHT  &kp PG_UP                                                  &kp LEFT   &kp DOWN    &kp UP_ARROW  &kp RIGHT      &kp KP_PLUS      &none
+&trans        &kp K_CMENU         &none            &kp F11     &kp F12    &kp PG_DN  &trans  &trans  &trans  &trans  &trans  &trans  &kp COMMA  &kp KP_N1   &kp KP_N2     &kp KP_N3      &kp KP_ENTER     &trans
+&trans        &kp CAPS            &kp INS          &kp F11     &kp F12               &trans  &trans  &trans  &trans  &trans  &trans             &kp KP_N0   &kp KP_N0     &kp KP_DOT     &kp KP_ENTER     &trans
             >;
         };
 
         /* Numeric keypad and mouse movement layer */
+
         tri-upper {
             /* ---------------------------------------------------------------------------------------------------------------------------------
              * | N0   | N6   | N2   | N8    | N4    |                                                               | N4   | N8   | N2   | N6   | N0   |
@@ -265,6 +276,7 @@
         };
 
         /* System control and RGB configuration layer */
+
         magic_layer {
             /* ---------------------------------------------------------------------------------------------------------------------------------
              * | BTCLR | ---  | ---  | ---   | ---   |                                                               | ---  | ---  | ---  | ---  | BTCLA |
@@ -286,6 +298,7 @@
         };
 
         /* Factory test layer - transparent layer for testing */
+
         layer_4 {
             /* ---------------------------------------------------------------------------------------------------------------------------------
              * | trans | trans | trans | trans | trans |                                                               | trans | trans | trans | trans | trans |
