@@ -242,7 +242,7 @@
     keymap {
         compatible = "zmk,keymap";
 
-        /* Base layer with default key mappings */
+        /* Base layer with default key mappings (Layer 0) */
         default_layer {
             /* ---------------------------------------------------------------------------------------------------------------------------------
              * |  F1   |  F2 |  F3 |  F4  |  F5  |                                                               |  F6   |  F7   |  F8  |   F9  |  F10 |
@@ -259,11 +259,11 @@
 &kp ESC    &kp Q     &kp W    &kp E     &kp R      &kp T                                                                                               &kp Y   &kp U   &kp I      &kp O     &kp P     &kp BSLH
 &kp TAB    &hm LCTRL A &hm LALT S &hm LGUI D &hm LSHFT F &kp G                                                                                         &kp H   &hm RSHFT J &hm RGUI K &hm RALT L &hm RCTRL SEMI &kp SQT
 &kp LCTRL  &kp Z     &kp X    &kp C     &kp V      &kp B   &kp LSHFT   &td_cp    &kp ESC    &kp LGUI   &kp LC(Z)  &kp RSHFT   &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &kp PG_UP
-&magic MAGIC 0 &kp HOME  &kp END  &kp LEFT  &kp RIGHT          &bs_nav NAVIGATION BACKSPACE &lt_sym SYMBOL LC(C) &space_sym SYMBOL SPACE  &kp ENTER &kp BACKSPACE &lt_sym NAVIGATION LC(X)        &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &kp PG_DN
+&magic MAGIC 0 &kp HOME  &kp END  &kp LEFT  &kp RIGHT          &bs_nav NAVIGATION BACKSPACE &lt_sym SYMBOL LC(C) &space_sym NUMPAD SPACE  &kp ENTER &kp BACKSPACE &lt_sym NAVIGATION LC(X)        &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &kp PG_DN
             >;
         };
 
-        /* Navigation and keypad layer */
+        /* Navigation layer (Layer 1) */
         navigation_layer {
             /* ---------------------------------------------------------------------------------------------------------------------------------
              * | BRIDN | BRIUP | PREV | NEXT  | PLAY  |                                                               | MUTE  | VOLDN | VOLUP |  ---  | PAUSE |
@@ -284,7 +284,7 @@
             >;
         };
 
-        /* Numeric keypad layer */
+        /* Numeric keypad layer (Layer 2) */
         numpad_layer {
             /* ---------------------------------------------------------------------------------------------------------------------------------
              * | ---  | ---  | ---  | ---   | ---   |                                                               | /    | 7    | 8    | 9    | -    |
@@ -305,7 +305,7 @@
             >;
         };
 
-        /* Symbol Layer */
+        /* Symbol Layer (Layer 3) */
         symbol_layer {
             /* ---------------------------------------------------------------------------------------------------------------------------------
              * | ESC  |  !   |  @   |  #   |  $   |                                                               |  ^   |  &   |  *   |  (   |  )   |
@@ -326,7 +326,7 @@
             >;
         };
 
-        /* System control and RGB configuration layer */
+        /* System control and RGB configuration layer (Layer 4) */
         magic_layer {
             /* ---------------------------------------------------------------------------------------------------------------------------------
              * | BTCLR | ---  | ---  | ---   | ---   |                                                               | ---  | ---  | ---  | ---  | BTCLA |
@@ -347,7 +347,7 @@
             >;
         };
 
-        /* Factory test layer - transparent layer for testing */
+        /* Factory test layer - transparent layer for testing (Layer 5) */
         factory_test_layer {
             /* ---------------------------------------------------------------------------------------------------------------------------------
              * | trans | trans | trans | trans | trans |                                                               | trans | trans | trans | trans | trans |
