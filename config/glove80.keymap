@@ -59,6 +59,7 @@
             bindings = <&mo>, <&kp>;
         };
 
+        // スペースキー用のホールドタップ
         space_sym: space_symbol {
             compatible = "zmk,behavior-hold-tap";
             label = "SPACE_SYMBOL";
@@ -68,6 +69,7 @@
             bindings = <&mo>, <&kp>;
         };
 
+        // 言語切替キー用のホールドタップ
         lt_sym: layer_tap_symbol {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_SYMBOL";
@@ -115,6 +117,7 @@
         };
         
         // Word単位の移動用mod-morph
+        // 単語単位で左に移動（Shift+で選択しながら移動）
         word_left: word_left {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
@@ -122,6 +125,7 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
         
+        // 単語単位で右に移動（Shift+で選択しながら移動）
         word_right: word_right {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
@@ -130,6 +134,7 @@
         };
         
         // 段落単位の移動用mod-morph
+        // 段落単位で上に移動（Shift+で選択しながら移動）
         paragraph_up: paragraph_up {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
@@ -137,6 +142,7 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
         
+        // 段落単位で下に移動（Shift+で選択しながら移動）
         paragraph_down: paragraph_down {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
@@ -144,7 +150,7 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
         
-        // 削除操作のmod-morph
+        // 削除操作のmod-morph（Shift+でワード削除）
         delete_selection: delete_selection {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
