@@ -49,32 +49,33 @@
             bindings = <&kp>, <&kp>;
         };
 
-        // Thumb key hold-tap configurations
-        bs_nav: backspace_nav {
+        // レイヤータップ（ホールド: レイヤー, タップ: キー）
+        // 「balanced」フレーバー - ホールドとタップのバランスが取れた設定
+        lth_balanced: layer_tap_hold_balanced {
             compatible = "zmk,behavior-hold-tap";
-            label = "BACKSPACE_NAV";
+            label = "LAYER_TAP_BALANCED";
             #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <200>;
             bindings = <&mo>, <&kp>;
         };
 
-        // スペースキー用のホールドタップ
-        space_sym: space_symbol {
+        // 「tap-preferred」フレーバー - タップが優先される設定
+        lth_tap_pref: layer_tap_hold_tap_preferred {
             compatible = "zmk,behavior-hold-tap";
-            label = "SPACE_SYMBOL";
+            label = "LAYER_TAP_TAP_PREF";
             #binding-cells = <2>;
-            flavor = "balanced";
+            flavor = "tap-preferred";
             tapping-term-ms = <200>;
             bindings = <&mo>, <&kp>;
         };
 
-        // 言語切替キー用のホールドタップ
-        lt_sym: layer_tap_symbol {
+        // 「hold-preferred」フレーバー - ホールドが優先される設定
+        lth_hold_pref: layer_tap_hold_hold_preferred {
             compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_TAP_SYMBOL";
+            label = "LAYER_TAP_HOLD_PREF";
             #binding-cells = <2>;
-            flavor = "balanced";
+            flavor = "hold-preferred";
             tapping-term-ms = <200>;
             bindings = <&mo>, <&kp>;
         };
@@ -303,7 +304,7 @@
 &kp ESC    &kp Q     &kp W    &kp E     &kp R      &kp T                                                                                               &kp Y   &kp U   &kp I      &kp O     &kp P     &kp BSLH
 &kp TAB    &hm LGUI A &hm LALT S &hm LCTRL D &hm LSHFT F &kp G                                                                                         &kp H   &hm RSHFT J &hm RCTRL K &hm RALT L &hm RGUI SEMI &kp SQT
 &kp LCTRL  &kp Z     &kp X    &kp C     &kp V      &kp B   &kp LSHFT   &td_cp    &kp ESC    &kp LGUI   &kp LC(Z)  &kp RSHFT   &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &kp PG_UP
-&magic MAGIC 0 &kp HOME  &kp END  &kp LEFT  &kp RIGHT          &bs_nav NAVIGATION BACKSPACE &lt_sym SYMBOL LANGUAGE_1 &space_sym NUMPAD SPACE  &kp ENTER &kp DELETE &lt_sym NAVIGATION LANGUAGE_2        &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &kp PG_DN
+&magic MAGIC 0 &kp HOME  &kp END  &kp LEFT  &kp RIGHT          &lth_balanced NAVIGATION BACKSPACE &lth_balanced SYMBOL LANGUAGE_1 &lth_balanced NUMPAD SPACE  &kp ENTER &kp DELETE &lth_balanced NAVIGATION LANGUAGE_2        &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &kp PG_DN
             >;
         };
 
