@@ -349,24 +349,24 @@
             >;
         };
 
-        /* Symbol Layer (Layer 3) */
+        /* Symbol Layer (Layer 3) - プログラミング向け記号配置 */
         symbol_layer {
             /* ---------------------------------------------------------------------------------------------------------------------------------
              * | ESC  |  !   |  @   |  #   |  $   |                                                               |  ^   |  &   |  *   |  (   |  )   |
-             * | trans|  !   |  @   |  #   |  $   |  %   |                                                 |  ^   |  &   |  *   |  (   |  )   |  |   |
-             * | trans|  \   |  /   |  {   |  }   |  `   |                                                 |  +   |  -   |  =   |  [   |  ]   |  \   |
-             * | trans|  ~   |  :   |  ;   |  <   |  >   |                                                 |  "   |  '   |  _   |  ,   |  .   |  ?   |
-             * | trans|  $   |  *   |  -   |  +   |  =   | trans| trans| trans| trans| trans| trans| trans|  @   |  #   |  %   |  &   |  /   |
-             * | trans|  !   |  @   |  #   |  $   |      | trans| trans| trans| trans| DEL   | trans|      |  %   |  ^   |  (   |  )   |  \   |
+             * | trans|  1!  |  2@  |  3#  |  4$  |  5%  |                                                 |  6^  |  7&  |  8*  |  9(  |  0)  |  |   |
+             * | trans|  `~  |  \|  |  -_  |  =+  |  [{  |                                                 |  ]}  |  ;:  |  '"  |  ,<  |  .>  |  /?  |
+             * | caps | COPY | CUT  | PASTE| UNDO | REDO |                                                 |  +   |  -   |  *   |  /   |  =   |  :   |
+             * | trans|  F1  |  F2  |  F3  |  F4  |  F5  | trans| trans| trans| trans| trans| trans| trans|  F6  |  F7  |  F8  |  F9  |  F10 |
+             * | trans|  F11 |  F12 |  {   |  }   |      | trans| trans| trans| trans| trans | trans|      |  (   |  )   |  [   |  ]   |  \   |
              */
 
             bindings = <
 &kp ESC   &kp EXCL     &kp AT       &kp HASH     &kp DLLR                                                                                 &kp CARET    &kp AMPS     &kp ASTRK    &kp LPAR     &kp RPAR
-&trans    &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT                                                         &kp CARET &kp AMPS     &kp ASTRK    &kp LPAR     &kp RPAR     &kp PIPE
-&trans    &kp BSLH     &kp FSLH     &kp LBRC     &kp RBRC     &kp GRAVE                                                         &kp PLUS  &kp MINUS    &kp EQUAL    &kp LBKT     &kp RBKT     &kp BSLH
-&trans    &kp TILDE    &kp COLON    &kp SEMI     &kp LT       &kp GT                                                            &kp DQT   &kp SQT      &kp UNDER    &kp COMMA    &kp DOT      &kp QMARK
-&trans    &kp DLLR     &kp ASTRK    &kp MINUS    &kp PLUS     &kp EQUAL    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp AT    &kp HASH     &kp PRCNT    &kp AMPS     &kp FSLH
-&trans    &kp EXCL     &kp AT       &kp HASH     &kp DLLR                  &trans  &trans  &trans  &trans  &kp DEL  &trans          &kp PRCNT &kp CARET    &kp LPAR     &kp RPAR     &kp BSLH
+&trans    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5                                                           &kp N6     &kp N7       &kp N8       &kp N9       &kp N0       &kp PIPE
+&trans    &kp GRAVE    &kp BSLH     &kp MINUS    &kp EQUAL    &kp LBKT                                                         &kp RBKT   &kp SEMI     &kp SQT      &kp COMMA    &kp DOT      &kp FSLH
+&kp CAPS  &kp LC(C)    &kp LC(X)    &kp LC(V)    &kp LC(Z)    &kp LC(Y)                                                        &kp PLUS   &kp MINUS    &kp ASTRK    &kp FSLH     &kp EQUAL    &kp COLON
+&trans    &kp F1       &kp F2       &kp F3       &kp F4       &kp F5       &trans  &trans  &trans  &trans  &trans  &trans  &kp F6     &kp F7       &kp F8       &kp F9       &kp F10      &none
+&trans    &kp F11      &kp F12      &kp LBRC     &kp RBRC                  &trans  &trans  &trans  &kp SPACE &trans  &trans         &kp LPAR   &kp RPAR     &kp LBKT     &kp RBKT     &kp BSLH
             >;
         };
 
