@@ -384,7 +384,7 @@
 &trans        &none              &kp CARET        &kp DOLLAR  &kp PERCENT     &kp HOME                                                                                 &kp LC(Z)  &kp LC(X)   &kp LC(C)              &kp LC(V)         &kp PSCRN  &kp SLCK
 &trans        &select_forward    &select_forward  &kp END     &paragraph_up   &paragraph_down                                                                          &kp LPAR   &kp RPAR    &kp LBKT               &kp RBKT          &none      &none
 &trans        &hm LEFT_GUI HOME  &kp LEFT_ALT     &kp RCTRL   &kp LEFT_SHIFT  &none                                                                                    &kp LEFT   &kp DOWN    &kp UP                 &kp RIGHT         &kp PG_UP  &kp PG_DN
-&trans        &kp K_CMENU        &kp LC(Z)        &kp LC(Y)   &kp LC(A)       &select_backward  &kp LC(X)  &kp LC(C)  &kp LC(V)  &trans     &trans             &trans  &kp HOME   &kp END     &select_line_backward  &select_backward  &none      &none
+&trans        &kp LC(Z)          &kp LC(X)        &kp LC(C)   &kp LC(V)       &select_backward  &kp LC(X)  &kp LC(C)  &kp LC(V)  &trans     &trans             &trans  &kp HOME   &kp END     &select_line_backward  &select_backward  &none      &none
 &trans        &none              &kp INS          &kp F11     &kp F12                           &trans     &trans     &trans     &kp SPACE  &delete_selection  &trans             &none       &none                  &none             &kp ESC    &trans
             >;
         };
