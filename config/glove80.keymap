@@ -14,7 +14,6 @@
 #define HYPER LC(LS(LG(LALT)))
 
 /* Layer definitions */
-
 #define DEFAULT 0
 #define NAVIGATION 1
 #define NUMPAD 2
@@ -29,17 +28,6 @@
 
 / {
     behaviors {
-        // For the "layer" key, it'd nice to be able to use it as either a shift or a toggle.
-        // Configure it as a tap dance, so the first tap (or hold) is a &mo and the second tap is a &to
-
-        layer_td: tap_dance_0 {
-            compatible = "zmk,behavior-tap-dance";
-            label = "LAYER_TAP_DANCE";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&mo 1>, <&to 1>;
-        };
-
         magic: magic_hold_tap {
             compatible = "zmk,behavior-hold-tap";
             label = "MAGIC_HOLD_TAP";
@@ -71,38 +59,37 @@
             bindings = <&mo>, <&kp>;
         };
 
-        space_lower: space_lower {
+        space_sym: space_symbol {
             compatible = "zmk,behavior-hold-tap";
-            label = "SPACE_LOWER";
+            label = "SPACE_SYMBOL";
             #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <200>;
             bindings = <&mo>, <&kp>;
         };
 
-        jp_sym: japanese_sym {
+        lt_sym: layer_tap_symbol {
             compatible = "zmk,behavior-hold-tap";
-            label = "JAPANESE_SYM";
+            label = "LAYER_TAP_SYMBOL";
             #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <200>;
             bindings = <&mo>, <&kp>;
         };
 
-        // Japanese input tap-dance
-        td_jp: tap_dance_japanese {
+        // Copy/Cut/Paste tap-dance
+        td_cp: tap_dance_copypaste {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_JAPANESE";
+            label = "TAP_DANCE_COPYPASTE";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp HENKAN>, <&kp MUHENKAN>;
+            bindings = <&kp LC(C)>, <&kp LC(V)>;
         };
 
         select_forward: select_forward {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&select_word_right>, <&extend_word_right>;
-
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
@@ -110,7 +97,6 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&select_word_left>, <&extend_word_left>;
-
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
@@ -118,22 +104,19 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&select_line_right>, <&extend_line_right>;
-
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         select_line_backward: select_line_backward {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&extend_line_left>, <&extend_line_left>;
-
+            bindings = <&select_line_left>, <&extend_line_left>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
 
     macros {
         /* Status and System Control Macros */
-
         rgb_ug_status_macro: rgb_ug_status_macro_0 {
             label = "RGB_UG_STATUS";
             compatible = "zmk,behavior-macro";
@@ -174,7 +157,7 @@
             wait-ms = <0>;
         };
 
-        bt_4: bt_4 {
+        bt_4: bt_profile_macro_4 {
             compatible = "zmk,behavior-macro";
             label = "BT_4";
             #binding-cells = <0>;
@@ -183,7 +166,6 @@
         };
 
         /* Text Selection and Navigation Macros */
-
         select_none: select_none {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -261,8 +243,7 @@
         compatible = "zmk,keymap";
 
         /* Base layer with default key mappings */
-
-        DefaultWin {
+        default_layer {
             /* ---------------------------------------------------------------------------------------------------------------------------------
              * |  F1   |  F2 |  F3 |  F4  |  F5  |                                                               |  F6   |  F7   |  F8  |   F9  |  F10 |
              * |  =    |  1  |  2  |  3   |  4   |  5   |                                                 |  6   |   7   |   8   |  9   |   0   |   -  |
@@ -277,21 +258,20 @@
 &kp EQUAL  &kp N1    &kp N2   &kp N3    &kp N4     &kp N5                                                                                              &kp N6  &kp N7  &kp N8     &kp N9    &kp N0    &kp MINUS
 &kp ESC    &kp Q     &kp W    &kp E     &kp R      &kp T                                                                                               &kp Y   &kp U   &kp I      &kp O     &kp P     &kp BSLH
 &kp TAB    &hm LCTRL A &hm LALT S &hm LGUI D &hm LSHFT F &kp G                                                                                         &kp H   &hm RSHFT J &hm RGUI K &hm RALT L &hm RCTRL SEMI &kp SQT
-&kp LCTRL  &kp Z     &kp X    &kp C     &kp V      &kp B   &kp LSHFT   &kp HENKAN   &kp CAPS   &kp LGUI   &kp MUHENKAN   &kp RSHFT   &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &kp PG_UP
-&magic MAGIC 0 &kp HOME  &kp END  &kp LEFT  &kp RIGHT          &bs_nav NAVIGATION BACKSPACE &jp_sym SYMBOL LANGUAGE_2 &kp SPACE  &kp ENTER &kp BACKSPACE &jp_sym NAVIGATION LANGUAGE_1        &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &kp PG_DN
+&kp LCTRL  &kp Z     &kp X    &kp C     &kp V      &kp B   &kp LSHFT   &td_cp    &kp ESC    &kp LGUI   &kp LC(Z)  &kp RSHFT   &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &kp PG_UP
+&magic MAGIC 0 &kp HOME  &kp END  &kp LEFT  &kp RIGHT          &bs_nav NAVIGATION BACKSPACE &lt_sym SYMBOL LC(C) &space_sym SYMBOL SPACE  &kp ENTER &kp BACKSPACE &lt_sym NAVIGATION LC(X)        &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &kp PG_DN
             >;
         };
 
         /* Navigation and keypad layer */
-
-        Navigation {
+        navigation_layer {
             /* ---------------------------------------------------------------------------------------------------------------------------------
              * | BRIDN | BRIUP | PREV | NEXT  | PLAY  |                                                               | MUTE  | VOLDN | VOLUP |  ---  | PAUSE |
              * | trans |  ---  |  ^   |  $    |  %    | HOME |                                                 | UNDO  | CUT   | COPY  | PASTE | PSCR  | SLCK  |
              * | trans |  ---  |  b   |  w    |  {    |  }   |                                                 |   (   |   )   |  [    |  ]    | ---   | ---   |
              * | trans |  ---  |  h   |  j    |  k    |  l   |                                                 | LEFT  | DOWN  |  UP   | RIGHT | PGUP  | PGDN  |
              * | trans | MENU  | UNDO | REDO  | SEL_A | FIND | trans | trans | trans | trans | trans | trans  | HOME  | END   | SEL_L | SEL_W | ---   | ---   |
-             * | trans | CAPS  | INS  | F11   | F12   |      | trans | trans | trans | SPACE | BSPC  | ENTER  |       | ---   | ---   | ---   | ESC   | trans |
+             * | trans | CAPS  | INS  | F11   | F12   |      | trans | trans | trans | SPACE | DEL   | trans  |       | ---   | ---   | ---   | ESC   | trans |
              */
 
             bindings = <
@@ -299,42 +279,41 @@
 &trans        &none               &kp CARET   &kp DOLLAR  &kp PERCENT  &kp HOME                                                     &kp LC(Z)  &kp LC(X)   &kp LC(C)     &kp LC(V)      &kp PSCRN        &kp SLCK
 &trans        &none               &kp B       &kp W       &kp LBRC     &kp RBRC                                                     &kp LPAR   &kp RPAR    &kp LBKT      &kp RBKT       &none            &none
 &trans        &none               &kp H       &kp J       &kp K        &kp L                                                        &kp LEFT   &kp DOWN    &kp UP        &kp RIGHT      &kp PG_UP        &kp PG_DN
-&trans        &kp K_CMENU         &kp LC(Z)   &kp LC(Y)   &kp LC(A)    &select_word_right  &trans  &trans  &trans  &trans  &trans  &trans  &kp HOME   &kp END     &select_line_left &select_word_left &none  &none
-&trans        &kp CAPS            &kp INS     &kp F11     &kp F12                           &trans  &trans  &trans  &kp SPACE &kp BSPC &kp RET           &none      &none          &none           &kp ESC  &trans
+&trans        &kp K_CMENU         &kp LC(Z)   &kp LC(Y)   &kp LC(A)    &select_forward  &trans  &trans  &trans  &trans  &trans  &trans  &kp HOME   &kp END     &select_line_backward &select_backward &none  &none
+&trans        &none               &kp INS     &kp F11     &kp F12                           &trans  &trans  &trans  &kp SPACE &kp DEL  &trans           &none      &none          &none           &kp ESC  &trans
             >;
         };
 
-        /* Numeric keypad and mouse movement layer */
-
-        Numpad_layer {
+        /* Numeric keypad layer */
+        numpad_layer {
             /* ---------------------------------------------------------------------------------------------------------------------------------
-             * | N0   | N6   | N2   | N8    | N4    |                                                               | N4   | N8   | N2   | N6   | N0   |
-             * | N1   | N7   | N3   | N9    | N5    | N0   |                                                 | N0   | N5   | N9   | N3   | N7   | N1   |
-             * | N2   | N8   | N4   | UP    | N6    | N1   |                                                 | N1   | N6   | N0   | N4   | N8   | N2   |
-             * | N3   | N9   | LEFT | DOWN  | RIGHT | N2   |                                                 | N2   | N7   | N1   | N5   | N9   | N3   |
-             * | N4   | N0   | N6   | N2    | N8    | N3   | N4   | N5   | N6   | N6   | N5   | N4   | N3   | N8   | N2   | N6   | N0   | N4   |
-             * | N5   | N1   | N7   | N3    | N9    |      | N7   | N8   | N9   | N9   | N8   | N7   |      | N9   | N3   | N7   | N1   | N5   |
+             * | ---  | ---  | ---  | ---   | ---   |                                                               | /    | 7    | 8    | 9    | -    |
+             * | ---  | ---  | ---  | ---   | ---   | ---  |                                                 | ---  | *    | 4    | 5    | 6    | +    |
+             * | ---  | ---  | ---  | MOUS↑ | ---   | ---  |                                                 | ---  | 0    | 1    | 2    | 3    | ---  |
+             * | ---  | ---  | MOUS← | MOUS↓ | MOUS→ | --- |                                                 | ---  | NLCK | .    | 00   | ---  | ---  |
+             * | ---  | ---  | MBT3 | MBT2  | MBT1  | ---  | ---  | ---  | ---  | ---  | ---  | ---  | ---  | ---  | ---  | ---  | ---  | ---  |
+             * | ---  | ---  | ---  | ---   | ---   |      | ---  | ---  | ---  | ---  | ---  | ---  |      | ---  | ---  | ---  | ---  | ---  |
              */
 
             bindings = <
-&kp N0  &kp N6  &kp N2          &kp N8          &kp N4                                                                           &kp N4  &kp N8  &kp N2  &kp N6  &kp N0
-&kp N1  &kp N7  &kp N3          &kp N9          &kp N5           &kp N0                                                  &kp N0  &kp N5  &kp N9  &kp N3  &kp N7  &kp N1
-&kp N2  &kp N8  &kp N4          &mmv MOVE_UP    &kp N6           &kp N1                                                  &kp N1  &kp N6  &kp N0  &kp N4  &kp N8  &kp N2
-&kp N3  &kp N9  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &kp N2                                                  &kp N2  &kp N7  &kp N1  &kp N5  &kp N9  &kp N3
-&kp N4  &kp N0  &kp N6          &kp N2          &kp N8           &kp N3  &kp N4  &kp N5  &kp N6  &kp N6  &kp N5  &kp N4  &kp N3  &kp N8  &kp N2  &kp N6  &kp N0  &kp N4
-&kp N5  &kp N1  &kp N7          &kp N3          &kp N9                   &kp N7  &kp N8  &kp N9  &kp N9  &kp N8  &kp N7          &kp N9  &kp N3  &kp N7  &kp N1  &kp N5
+&none  &none  &none          &none          &none                                                                           &kp KP_DIVIDE  &kp KP_N7    &kp KP_N8  &kp KP_N9  &kp KP_MINUS
+&none  &none  &none          &none          &none           &none                                                  &none    &kp KP_MULTIPLY  &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_PLUS
+&none  &none  &none          &mmv MOVE_UP   &none           &none                                                  &none    &kp KP_N0    &kp KP_N1    &kp KP_N2  &kp KP_N3  &none
+&none  &none  &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none                                                  &none    &kp KP_NLCK  &kp KP_DOT   &none      &none      &none
+&none  &none  &mkp MB3       &mkp MB2       &mkp MB1        &none   &none  &none  &none  &none  &none  &none  &none  &none  &none        &none        &none      &none
+&none  &none  &none          &none          &none                   &none  &none  &none  &none  &none  &none         &none  &none        &none        &none      &none
             >;
         };
 
         /* Symbol Layer */
-        Symbol_layer {
+        symbol_layer {
             /* ---------------------------------------------------------------------------------------------------------------------------------
              * | ESC  |  !   |  @   |  #   |  $   |                                                               |  ^   |  &   |  *   |  (   |  )   |
              * | trans|  !   |  @   |  #   |  $   |  %   |                                                 |  ^   |  &   |  *   |  (   |  )   |  |   |
              * | trans|  \   |  /   |  {   |  }   |  `   |                                                 |  +   |  -   |  =   |  [   |  ]   |  \   |
              * | trans|  ~   |  :   |  ;   |  <   |  >   |                                                 |  "   |  '   |  _   |  ,   |  .   |  ?   |
              * | trans|  $   |  *   |  -   |  +   |  =   | trans| trans| trans| trans| trans| trans| trans|  @   |  #   |  %   |  &   |  /   |
-             * | trans|  !   |  @   |  #   |  $   |      | trans| trans| trans| SPACE| BSPC | ENTER|      |  %   |  ^   |  (   |  )   |  \   |
+             * | trans|  !   |  @   |  #   |  $   |      | trans| trans| trans| trans| DEL   | trans|      |  %   |  ^   |  (   |  )   |  \   |
              */
 
             bindings = <
@@ -343,12 +322,11 @@
 &trans    &kp BSLH     &kp FSLH     &kp LBRC     &kp RBRC     &kp GRAVE                                                         &kp PLUS  &kp MINUS    &kp EQUAL    &kp LBKT     &kp RBKT     &kp BSLH
 &trans    &kp TILDE    &kp COLON    &kp SEMI     &kp LT       &kp GT                                                            &kp DQT   &kp SQT      &kp UNDER    &kp COMMA    &kp DOT      &kp QMARK
 &trans    &kp DLLR     &kp ASTRK    &kp MINUS    &kp PLUS     &kp EQUAL    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp AT    &kp HASH     &kp PRCNT    &kp AMPS     &kp FSLH
-&trans    &kp EXCL     &kp AT       &kp HASH     &kp DLLR                  &trans  &trans  &trans  &kp SPACE &kp BSPC &kp RET          &kp PRCNT &kp CARET    &kp LPAR     &kp RPAR     &kp BSLH
+&trans    &kp EXCL     &kp AT       &kp HASH     &kp DLLR                  &trans  &trans  &trans  &trans  &kp DEL  &trans          &kp PRCNT &kp CARET    &kp LPAR     &kp RPAR     &kp BSLH
             >;
         };
 
         /* System control and RGB configuration layer */
-
         magic_layer {
             /* ---------------------------------------------------------------------------------------------------------------------------------
              * | BTCLR | ---  | ---  | ---   | ---   |                                                               | ---  | ---  | ---  | ---  | BTCLA |
@@ -370,8 +348,7 @@
         };
 
         /* Factory test layer - transparent layer for testing */
-
-        layer_4 {
+        factory_test_layer {
             /* ---------------------------------------------------------------------------------------------------------------------------------
              * | trans | trans | trans | trans | trans |                                                               | trans | trans | trans | trans | trans |
              * | trans | trans | trans | trans | trans | trans |                                                 | trans | trans | trans | trans | trans | trans |
