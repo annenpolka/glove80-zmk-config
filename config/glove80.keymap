@@ -334,19 +334,19 @@
             /* ---------------------------------------------------------------------------------------------------------------------------------
              * | ---  | ---  | ---  | ---   | ---   |                                                               | NLCK | /    | *    | -    | BSPC |
              * | ---  | SCR↑ | SCR← | MOUS↑ | SCR→  | SCR↓ |                                                 | CALC | 7    | 8    | 9    | +    | =    |
-             * | ---  | ---  | MOUS← | MOUS↓ | MOUS→ |MWHL↑ |                                                 | TAB  | 4    | 5    | 6    | ,    | ENT  |
-             * | ---  | UNDO | CUT  | COPY  | PASTE |MWHL↓ |                                                 | 00   | 1    | 2    | 3    | .    | DEL  |
+             * | ---  | ---  | MOUS← | MOUS↓ | MOUS→ |WHEEL↑|                                                 | TAB  | 4    | 5    | 6    | ,    | ENT  |
+             * | ---  | UNDO | CUT  | COPY  | PASTE |WHEEL↓|                                                 | 00   | 1    | 2    | 3    | .    | DEL  |
              * | ---  | ---  | ---  | ---   | ---   | ---  |LCLK |RCLK |MCLK | LCLK | RCLK | MCLK | MB4  | MB5  | ---  | 0    | ---  | ---  |
-             * | ---  | ---  | ---  | ---   | ---   |      |LCLK |RCLK |MCLK | MWHU | MWHD | MB4+5|      | ---  | ---  | ---  | ---  | ---  |
+             * | ---  | ---  | ---  | ---   | ---   |      |LCLK |RCLK |MCLK |WHEEL↑|WHEEL↓| MB4+5|      | ---  | ---  | ---  | ---  | ---  |
              */
 
             bindings = <
 &none      &none        &none           &none            &none                                                                                               &kp KP_NLCK      &kp KP_DIVIDE &kp KP_MULTIPLY &kp KP_MINUS &kp BSPC
 &none      &msc SCRL_UP &msc SCRL_LEFT  &mmv MOVE_UP     &msc SCRL_RIGHT   &msc SCRL_DOWN                                                         &kp C_AL_CALC  &kp KP_N7    &kp KP_N8     &kp KP_N9     &kp KP_PLUS  &kp EQUAL
-&none      &none        &mmv MOVE_LEFT  &mmv MOVE_DOWN   &mmv MOVE_RIGHT   &mwh SCROLL_UP                                                         &kp TAB        &kp KP_N4    &kp KP_N5     &kp KP_N6     &kp COMMA    &kp KP_ENTER
-&none      &kp LC(Z)    &kp LC(X)       &kp LC(C)        &kp LC(V)         &mwh SCROLL_DOWN                                                       &kp KP_N0      &kp KP_N1    &kp KP_N2     &kp KP_N3     &kp KP_DOT   &kp DEL
+&none      &none        &mmv MOVE_LEFT  &mmv MOVE_DOWN   &mmv MOVE_RIGHT   &mwh WH_U                                                              &kp TAB        &kp KP_N4    &kp KP_N5     &kp KP_N6     &kp COMMA    &kp KP_ENTER
+&none      &kp LC(Z)    &kp LC(X)       &kp LC(C)        &kp LC(V)         &mwh WH_D                                                              &kp KP_N0      &kp KP_N1    &kp KP_N2     &kp KP_N3     &kp KP_DOT   &kp DEL
 &none      &none        &none           &none            &none             &none            &mkp LCLK   &mkp RCLK   &mkp MCLK   &mkp LCLK   &mkp RCLK   &mkp MCLK   &mkp MB4    &mkp MB5  &none          &kp KP_N0    &none      &none
-&none      &none        &none           &none            &none                              &mkp LCLK   &mkp RCLK   &mkp MCLK   &mwh SCROLL_UP &mwh SCROLL_DOWN &none     &none   &none          &none        &none      &none
+&none      &none        &none           &none            &none                              &mkp LCLK   &mkp RCLK   &mkp MCLK   &mwh WH_U     &mwh WH_D       &none     &none   &none          &none        &none      &none
             >;
         };
 
