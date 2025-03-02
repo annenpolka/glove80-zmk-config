@@ -32,19 +32,64 @@ if [ -f "glove80.uf2/glove80.uf2" ]; then
     
     # ブートローダーの確認
     echo "ブートローダーの検索中..."
-    if [ -d "/Volumes/NO NAME" ] || [ -d "/Volumes/NO NAME 1" ]; then
+    BOOTLOADER_FOUND=false
+    BOOTLOADER_PATHS=()
+    
+    # 可能なブートローダーパスを確認
+    if [ -d "/Volumes/NO NAME" ]; then
+        BOOTLOADER_PATHS+=("/Volumes/NO NAME")
+        BOOTLOADER_FOUND=true
+    fi
+    
+    if [ -d "/Volumes/NO NAME 1" ]; then
+        BOOTLOADER_PATHS+=("/Volumes/NO NAME 1")
+        BOOTLOADER_FOUND=true
+    fi
+    
+    # GLVで始まるボリュームを探す
+    for vol in /Volumes/GLV*; do
+        if [ -d "$vol" ]; then
+            BOOTLOADER_PATHS+=("$vol")
+            BOOTLOADER_FOUND=true
+        fi
+    done
+    
+    if [ "$BOOTLOADER_FOUND" = true ]; then
         echo "ブートローダーが検出されました！"
-        echo "以下のコマンドでファームウェアを書き込みできます:"
         
-        if [ -d "/Volumes/NO NAME" ]; then
-            echo "cp glove80.uf2/glove80.uf2 \"/Volumes/NO NAME/\""
-        fi
+        # 自動コピーを実行
+        for path in "${BOOTLOADER_PATHS[@]}"; do
+            echo "ファームウェアを「$path」にコピー中..."
+            if cp "glove80.uf2/glove80.uf2" "$path/"; then
+                echo "✅ コピー成功: $path"
+            else
+                echo "❌ コピー失敗: $path"
+            fi
+        done
         
-        if [ -d "/Volumes/NO NAME 1" ]; then
-            echo "cp glove80.uf2/glove80.uf2 \"/Volumes/NO NAME 1/\""
-        fi
+        echo "⚠️ 書き込み完了後、キーボードが自動的に再起動します"
+        echo "🔄 Bluetoothの場合、再ペアリングが必要な場合があります"
     else
-        echo "ブートローダーが検出されませんでした。キーボードをブートローダーモードにしてください。"
+        echo "ブートローダーモードが検出されませんでした。"
+        echo ""
+        echo "⚠️ キーボードをブートローダーモードにするには："
+        echo "1. マジックキー + シングルクォート（右半分）または Esc（左半分）を押す"
+        echo "2. ボリュームが「NO NAME」または「GLV80*BOOT」として表示されるのを確認"
+        echo "3. その後、このスクリプトを再実行してください"
+        echo ""
+        echo "または、手動でコピーすることもできます:"
+        echo "cp \"$(pwd)/glove80.uf2/glove80.uf2\" /Volumes/ブートローダー名/"
+        
+        # ファームウェアの保存場所を作成
+        if [ ! -d "firmware" ]; then
+            mkdir -p firmware
+        fi
+        
+        # ファームウェアをfirmwareディレクトリにコピー
+        cp "glove80.uf2/glove80.uf2" "firmware/glove80-$(date +%Y%m%d-%H%M%S).uf2"
+        echo ""
+        echo "✅ ファームウェアを「firmware」ディレクトリに保存しました"
+        echo "📁 保存場所: $(pwd)/firmware/"
     fi
 else
     echo "Error: ファームウェアのダウンロードに失敗したか、予期しないファイル構造です"
