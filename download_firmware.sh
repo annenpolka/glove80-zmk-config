@@ -1,6 +1,9 @@
 #!/bin/bash
 
-set -euo pipefail
+# 配列の参照で見つからないインデックスでもエラーを出さないようにする
+set -eo pipefail
+# 文字化け防止のためロケールを設定
+export LC_ALL=C
 
 echo "GitHub CLIを使って最新のファームウェアをダウンロードします..."
 
@@ -33,7 +36,7 @@ if [ -f "glove80.uf2/glove80.uf2" ]; then
     # ブートローダーの確認
     echo "ブートローダーの検索中..."
     BOOTLOADER_FOUND=false
-    BOOTLOADER_PATHS=()
+    declare -a BOOTLOADER_PATHS
     
     # 可能なブートローダーパスを確認
     if [ -d "/Volumes/NO NAME" ]; then
@@ -58,12 +61,14 @@ if [ -f "glove80.uf2/glove80.uf2" ]; then
         echo "ブートローダーが検出されました！"
         
         # 自動コピーを実行
-        for path in "${BOOTLOADER_PATHS[@]}"; do
-            echo "ファームウェアを「$path」にコピー中..."
-            if cp "glove80.uf2/glove80.uf2" "$path/"; then
-                echo "✅ コピー成功: $path"
+        echo "検出されたブートローダーパス: ${#BOOTLOADER_PATHS[@]}"
+        for i in "${!BOOTLOADER_PATHS[@]}"; do
+            current_path="${BOOTLOADER_PATHS[$i]}"
+            echo "ファームウェアを「${current_path}」にコピー中..."
+            if cp "glove80.uf2/glove80.uf2" "$current_path/"; then
+                echo "✅ コピー成功: ${current_path}"
             else
-                echo "❌ コピー失敗: $path"
+                echo "❌ コピー失敗: ${current_path}"
             fi
         done
         
