@@ -7,6 +7,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/pointing.h>
@@ -358,12 +359,12 @@
              */
 
             bindings = <
-&kp F1              &kp F2      &kp F3      &kp F4       &kp F5                                                                                                                                                                                                 &kp F6       &kp F7       &kp F8      &kp F9         &kp F10
-&kp EQUAL           &kp N1      &kp N2      &kp N3       &kp N4       &kp N5                                                                                                                                                                            &kp N6  &kp N7       &kp N8       &kp N9      &kp N0         &kp MINUS
-&kp ESC             &kp Q       &kp W       &kp E        &kp R        &kp T                                                                                                                                                                             &kp Y   &kp U        &kp I        &kp O       &kp P          &kp BSLH
-&hm LEFT_SHIFT TAB  &hm LGUI A  &hm LALT S  &hm LCTRL D  &hm LSHFT F  &kp G                                                                                                                                                                             &kp H   &hm RSHFT J  &hm RCTRL K  &hm RALT L  &hm RGUI SEMI  &kp SQT
-&kp LCTRL           &kp Z       &kp X       &kp C        &kp V        &kp B   &paragraph_down                &td_cp                      &kp ESC                &kp LGUI                    &kp DELETE                  &paragraph_up                   &kp N   &kp M        &kp COMMA    &kp DOT     &kp FSLH       &kp PG_UP
-&magic MAGIC 0      &kp HOME    &kp END     &kp LEFT     &kp RIGHT            &mt_hold_pref LCTRL BACKSPACE  &lth_balanced 1 LANGUAGE_1  &lth_tap_pref 3 SPACE  &mt_hold_pref RSHIFT ENTER  &lth_balanced 2 LANGUAGE_1  &mt_hold_pref RIGHT_ALT ESCAPE          &kp UP       &kp DOWN     &kp LBKT    &kp RBKT       &kp PG_DN
+&kp F1           &kp F2      &kp F3      &kp F4       &kp F5                                                                                                                                                                                                 &kp F6       &kp F7       &kp F8      &kp F9         &kp F10
+&kp EQUAL        &kp N1      &kp N2      &kp N3       &kp N4       &kp N5                                                                                                                                                                            &kp N6  &kp N7       &kp N8       &kp N9      &kp N0         &kp MINUS
+&select_forward  &kp Q       &kp W       &kp E        &kp R        &kp T                                                                                                                                                                             &kp Y   &kp U        &kp I        &kp O       &kp P          &kp BSLH
+&kp TAB          &hm LGUI A  &hm LALT S  &hm LCTRL D  &hm LSHFT F  &kp G                                                                                                                                                                             &kp H   &hm RSHFT J  &hm RCTRL K  &hm RALT L  &hm RGUI SEMI  &kp SQT
+&kt LSHFT        &kp Z       &kp X       &kp C        &kp V        &kp B   &paragraph_down                &td_cp                      &kp DELETE             &kp LGUI                     &kp DELETE                  &paragraph_up                  &kp N   &kp M        &kp COMMA    &kp DOT     &kp FSLH       &kp INT_RO
+&magic MAGIC 0   &kp HOME    &kp END     &kp LEFT     &kp RIGHT            &mt_hold_pref LCTRL BACKSPACE  &lth_balanced 1 LANGUAGE_2  &lth_tap_pref 3 SPACE  &mt_hold_pref RSHIFT ESCAPE  &lth_balanced 2 LANGUAGE_1  &mt_hold_pref RIGHT_ALT ENTER          &kp UP       &kp DOWN     &kp LBKT    &kp RBKT       &kp PIPE
             >;
         };
 
