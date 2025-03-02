@@ -4,7 +4,7 @@ set -euo pipefail
 
 # ユーザー名とリポジトリ名
 USER="annenpolka"
-REPO="annenpolka-glove80-config"
+REPO="glove80-zmk-config"
 
 # GitHubのAPIエンドポイント
 API_URL="https://api.github.com/repos/$USER/$REPO/actions/artifacts"
