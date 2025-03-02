@@ -446,8 +446,8 @@
 &kp EQUAL       &kp N1      &kp N2      &kp N3       &kp N4       &kp N5                                                                                                                                                                                  &kp N6  &kp N7       &kp N8       &kp N9             &kp N0         &kp MINUS
 &kp TAB         &kp Q       &kp W       &kp E        &kp R        &kp T                                                                                                                                                                                   &kp Y   &kp U        &kp I        &kp O              &kp P          &kp LEFT_BRACKET
 &kp ESCAPE      &hm LGUI A  &hm LALT S  &hm LCTRL D  &hm LSHFT F  &kp G                                                                                                                                                                                   &kp H   &hm RSHFT J  &hm RCTRL K  &hm RALT L         &hm RGUI SEMI  &kp SQT
-&kt LSHFT       &kp Z       &kp X       &kp C        &kp V        &kp B   &paragraph_down                     &td_cp                       &kp DELETE             &kp LGUI                    &kp TAB                      &paragraph_up                  &kp N   &kp M        &kp COMMA    &kp DOT            &kp FSLH       &kp INT_RO
-&magic MAGIC 0  &kp HOME    &kp END     &kp LEFT     &kp RIGHT            &mt_hold_pref LEFT_SHIFT BACKSPACE  &lth_hold_pref 1 LANGUAGE_2  &lth_tap_pref 3 SPACE  &mt_hold_pref RCTRL ESCAPE  &lth_hold_pref 2 LANGUAGE_1  &mt_hold_pref RIGHT_ALT ENTER          &kp UP       &kp DOWN     &kp RIGHT_BRACKET  &kp BACKSLASH  &kp PIPE
+&kt LSHFT       &kp Z       &kp X       &kp C        &kp V        &kp B   &paragraph_down                     &td_cp                       &kp DELETE             &kp LGUI                        &kp TAB                      &paragraph_up              &kp N   &kp M        &kp COMMA    &kp DOT            &kp FSLH       &kp INT_RO
+&magic MAGIC 0  &kp HOME    &kp END     &kp LEFT     &kp RIGHT            &mt_hold_pref LEFT_SHIFT BACKSPACE  &lth_hold_pref 1 LANGUAGE_2  &lth_tap_pref 3 SPACE  &mt_hold_pref RIGHT_ALT ESCAPE  &lth_hold_pref 2 LANGUAGE_1  &mt_hold_pref RCTRL ENTER          &kp UP       &kp DOWN     &kp RIGHT_BRACKET  &kp BACKSLASH  &kp PIPE
             >;
         };
 
@@ -508,12 +508,12 @@
              */
 
             bindings = <
-&kp ESC   &kp EXCL   &kp LS(N2)  &kp HASH    &kp DLLR                                                                                 &kp PRCNT   &kp CARET     &kp AMPS  &kp ASTRK  &kp LPAR
-&trans    &kp N1     &kp N2      &kp N3      &kp N4        &kp N5                                                        &kp N6       &kp N7      &kp N8        &kp N9    &kp N0     &kp RPAR
-&trans    &kp GRAVE  &kp LBKT    &kp RBKT    &kp SEMI      &kp EQUAL                                                     &kp MINUS    &kp EQUAL   &kp GRAVE     &kp LBKT  &kp SEMI   &kp COLON
-&kp CAPS  &kp EQUAL  &kp LT      &kp GT      &kp INT_YEN   &kp PIPE                                                      &kp INT_YEN  &kp COLON   &kp SEMI      &kp FSLH  &kp QMARK  &kp INT_RO
-&trans    &kp F1     &kp F2      &kp F3      &kp F4        &kp F5     &trans  &trans  &trans  &trans     &trans  &trans  &kp F6       &kp F7      &kp F8        &kp F9    &kp F10    &none
-&trans    &kp F11    &kp F12     &bt BT_CLR  &bt BT_SEL 0             &trans  &trans  &trans  &kp SPACE  &trans  &trans               &bt BT_CLR  &bt BT_SEL 0  &none     &none      &none
+&kp ESC   &kp EXCL   &kp LS(N2)  &kp HASH  &kp DLLR                                                                                &kp PRCNT  &kp CARET  &kp AMPS  &kp ASTRK  &kp LPAR
+&trans    &kp N1     &kp N2      &kp N3    &kp N4       &kp N5                                                        &kp N6       &kp N7     &kp N8     &kp N9    &kp N0     &kp RPAR
+&trans    &kp GRAVE  &kp LBKT    &kp RBKT  &kp SEMI     &kp EQUAL                                                     &kp MINUS    &kp EQUAL  &kp GRAVE  &kp LBKT  &kp SEMI   &kp COLON
+&kp CAPS  &kp EQUAL  &kp LT      &kp GT    &kp INT_YEN  &kp PIPE                                                      &kp INT_YEN  &kp COLON  &kp SEMI   &kp FSLH  &kp QMARK  &kp INT_RO
+&trans    &kp F1     &kp F2      &kp F3    &kp F4       &kp F5     &trans  &trans  &trans  &trans     &trans  &trans  &kp F6       &kp F7     &kp F8     &kp F9    &kp F10    &none
+&trans    &kp F11    &kp F12     &none     &none                   &trans  &trans  &trans  &kp SPACE  &trans  &trans               &none      &none      &none     &none      &none
             >;
         };
 
