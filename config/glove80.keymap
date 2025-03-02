@@ -55,49 +55,17 @@
  * | LANG2       | -              | かなキー           |
  * +-------------+----------------+------------------+
  */
-// マウス速度設定
-// カスタム最大速度の定義
-
-#define U_MOUSE_MOVE_MAX 4000      // デフォルトは600、大きいほど速い
-#define U_MOUSE_SCROLL_MAX 50      // デフォルトは10、大きいほど速い
-
-// 既存の定義を上書き
-
-#undef MOVE_UP
-#undef MOVE_DOWN
-#undef MOVE_LEFT
-#undef MOVE_RIGHT
-
-#define MOVE_UP MOVE_VERT(-U_MOUSE_MOVE_MAX)
-#define MOVE_DOWN MOVE_VERT(U_MOUSE_MOVE_MAX)
-#define MOVE_LEFT MOVE_HOR(-U_MOUSE_MOVE_MAX)
-#define MOVE_RIGHT MOVE_HOR(U_MOUSE_MOVE_MAX)
-
-// スクロール設定の上書き
-
-#undef SCRL_UP
-#undef SCRL_DOWN
-#undef SCRL_LEFT
-#undef SCRL_RIGHT
-
-#define SCRL_UP SCRL_VERT(U_MOUSE_SCROLL_MAX)
-#define SCRL_DOWN SCRL_VERT(-U_MOUSE_SCROLL_MAX)
-#define SCRL_LEFT SCRL_HOR(-U_MOUSE_SCROLL_MAX)
-#define SCRL_RIGHT SCRL_HOR(U_MOUSE_SCROLL_MAX)
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
-#include <dt-bindings/zmk/pointing.h>
-#include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
 
 #define HYPER LC(LS(LG(LALT)))
 
-/* Layer definitions */
+/* レイヤー定義 */
 
 #define DEFAULT 0
 #define NAVIGATION 1
@@ -107,12 +75,9 @@
 #define FACTORY_TEST 5
 
 /*
- * Keyboard Configuration
- * All behaviors, macros and keymap definitions are contained within the / { ... } node.
+ * キーボード設定
+ * すべての動作、マクロ、キーマップ定義は / { ... } ノード内に含まれています
  */
-
-&mmv { time-to-max-speed-ms = <200>; acceleration-exponent = <1>; };
-&msc { time-to-max-speed-ms = <200>; };
 
 / {
     behaviors {
