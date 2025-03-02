@@ -87,11 +87,11 @@
  */
 
 &mmv {
-    time-to-max-speed-ms = <200>;
+    time-to-max-speed-ms = <300>;
     acceleration-exponent = <1>;
 };
 
-&msc { time-to-max-speed-ms = <200>; };
+&msc { time-to-max-speed-ms = <300>; };
 
 / {
     behaviors {
@@ -426,7 +426,7 @@
 &kp EQUAL       &kp N1      &kp N2      &kp N3       &kp N4       &kp N5                                                                                                                                                                                  &kp N6  &kp N7       &kp N8       &kp N9             &kp N0         &kp MINUS
 &kp TAB         &kp Q       &kp W       &kp E        &kp R        &kp T                                                                                                                                                                                   &kp Y   &kp U        &kp I        &kp O              &kp P          &kp LEFT_BRACKET
 &kp ESCAPE      &hm LGUI A  &hm LALT S  &hm LCTRL D  &hm LSHFT F  &kp G                                                                                                                                                                                   &kp H   &hm RSHFT J  &hm RCTRL K  &hm RALT L         &hm RGUI SEMI  &kp SQT
-&sk LSHFT       &kp Z       &kp X       &kp C        &kp V        &kp B   &paragraph_down                     &td_cp                       &kp DELETE             &kp LGUI                        &kp TAB                      &paragraph_up              &kp N   &kp M        &kp COMMA    &kp DOT            &kp FSLH       &kp INT_RO
+&sk LSHFT       &kp Z       &kp X       &kp C        &kp V        &kp B   &select_forward                     &td_cp                       &kp DELETE             &kp LGUI                        &kp TAB                      &select_backward &kp N   &kp M        &kp COMMA    &kp DOT            &kp FSLH       &kp INT_RO
 &magic MAGIC 0  &kp HOME    &kp END     &kp LEFT     &kp RIGHT            &mt_hold_pref LEFT_SHIFT BACKSPACE  &lth_hold_pref 1 LANGUAGE_2  &lth_tap_pref 3 SPACE  &mt_hold_pref RIGHT_ALT ESCAPE  &lth_hold_pref 2 LANGUAGE_1  &mt_hold_pref RCTRL ENTER          &kp UP       &kp DOWN     &kp RIGHT_BRACKET  &kp BACKSLASH  &kp PIPE
             >;
         };
