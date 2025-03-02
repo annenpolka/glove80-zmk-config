@@ -111,7 +111,8 @@
  * All behaviors, macros and keymap definitions are contained within the / { ... } node.
  */
 
-&mmv { time-to-max-speed-ms = <400>; };
+&mmv { time-to-max-speed-ms = <200>; acceleration-exponent = <1>; };
+&msc { time-to-max-speed-ms = <200>; };
 
 / {
     behaviors {
