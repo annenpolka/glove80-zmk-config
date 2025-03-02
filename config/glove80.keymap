@@ -58,7 +58,7 @@
 // マウス速度設定
 // カスタム最大速度の定義
 
-#define U_MOUSE_MOVE_MAX 1200      // デフォルトは600、大きいほど速い
+#define U_MOUSE_MOVE_MAX 4000      // デフォルトは600、大きいほど速い
 #define U_MOUSE_SCROLL_MAX 50      // デフォルトは10、大きいほど速い
 
 // 既存の定義を上書き
