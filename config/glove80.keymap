@@ -79,6 +79,9 @@
  * すべての動作、マクロ、キーマップ定義は / { ... } ノード内に含まれています
  */
 
+&mmv { time-to-max-speed-ms = <200>; acceleration-exponent = <1>; };
+&msc { time-to-max-speed-ms = <200>; };
+
 / {
     behaviors {
         magic: magic_hold_tap {
